@@ -1,14 +1,18 @@
-state ("DERU"){
+state ("DERU", "1.0.12"){
 
 	byte finishedLevel : "UnityPlayer.dll", 0x00FE757C, 0x14, 0x4, 0x38, 0x28, 0x8, 0x38, 0xC60;
 	byte start : "UnityPlayer.dll", 0x00FE7778, 0x24, 0x14, 0x98, 0xC4, 0x0, 0x940; 
 }
 
-startup {
+init {
+
+	if (modules.First().ModuleMemorySize == 0xA1000)
+		version = "1.0.12";
 
 	vars.startTime = DateTime.Now.TimeOfDay; //this value is never used but apparently I cannot define the var on start straight up
 
 }
+
 
 start {
 	
